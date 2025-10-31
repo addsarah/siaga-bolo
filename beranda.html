@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-
     <link rel="stylesheet" href="fonts/icomoon/style.css" />
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
 
@@ -51,6 +50,13 @@
               <li><a href="pantau-bencana.html">Pantau Bencana</a></li>
               <li><a href="monitoring-gempa.html">Monitoring Gempa Bumi</a></li>
               <li><a href="kontak.html">Kontak</a></li>
+              <li><a class="nav-link" href="notifikasi.html"><i class="bi bi-bell"></i></a></li>
+              <li><a class="navbar-icon bi-person smoothscroll" href="login.html">Login</a></li>
+            </ul>
+
+            <!-- Tambahan Button Notifikasi dan Login -->
+            <ul class="navbar-nav float-end">
+              
             </ul>
 
             <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
@@ -242,7 +248,6 @@
       </div>
     </div>
 
-
     <!-- Toast untuk Sukses -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
       <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -305,7 +310,11 @@
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
 
-        <script>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
         // Inisialisasi Peta Utama
         var map = L.map('map').setView([-7.2575, 112.7521], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -395,3 +404,7 @@
             e.target.reset();
         });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -19,7 +19,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-
     <link rel="stylesheet" href="fonts/icomoon/style.css" />
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
 
@@ -27,9 +26,16 @@
     <link rel="stylesheet" href="css/aos.css" />
     <link rel="stylesheet" href="css/style.css" />
 
-    <title>
-      Siaga Bolo - Monitoring Gempa Bumi
-    </title>
+    <!-- Tambahan CSS untuk Peta Responsif -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+      #map { height: 400px; width: 100%; }
+      @media (max-width: 768px) {
+        #map { height: 300px; }
+      }
+    </style>
+
+    <title>Siaga Bolo - Monitoring Gempa Bumi</title>
   </head>
   <body>
     <div class="site-mobile-menu site-navbar-target">
@@ -48,9 +54,9 @@
             <a href="beranda.html" class="logo m-0 float-start">Siaga Bolo</a>
 
             <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-              <li class="active"><a href="beranda.html">Beranda</a></li>
+              <li><a href="beranda.html">Beranda</a></li>
               <li><a href="pantau-bencana.html">Pantau Bencana</a></li>
-              <li><a href="monitoring-gempa.html">Monitoring Gempa Bumi</a></li>
+              <li class="active"><a href="monitoring-gempa.html">Monitoring Gempa Bumi</a></li>
               <li><a href="kontak.html">Kontak</a></li>
             </ul>
 
@@ -62,26 +68,16 @@
       </div>
     </nav>
 
-    <div
-      class="hero page-inner overlay"
-      style="background-image: url('images/hero_bg_1.jpg')"
-    >
+    <div class="hero page-inner overlay" style="background-image: url('images/hero_bg_2.jpg')">
       <div class="container">
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-9 text-center mt-5">
             <h1 class="heading" data-aos="fade-up">Monitoring Gempa Bumi</h1>
 
-            <nav
-              aria-label="breadcrumb"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
+            <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
               <ol class="breadcrumb text-center justify-content-center">
                 <li class="breadcrumb-item"><a href="beranda.html">Beranda</a></li>
-                <li
-                  class="breadcrumb-item active text-white-50"
-                  aria-current="page"
-                >
+                <li class="breadcrumb-item active text-white-50" aria-current="page">
                   Monitoring Gempa Bumi
                 </li>
               </ol>
@@ -98,59 +94,77 @@
             <h2 class="font-weight-bold text-primary heading">
               Data Gempa Bumi Terkini
             </h2>
-            <p class="text-center mb-4">Pantau data bencana secara real-time berdasarkan laporan warga dan analitik. Halaman ini menampilkan statistik utama, bencana terbaru, dan visualisasi data bencana.</p>
+            <p class="text-center mb-4">Pantau data gempa bumi secara real-time berdasarkan data BMKG. Halaman ini menampilkan peta gempa, tabel data terkini, dan filter lokasi.</p>
+          </div>
+        </div>
+
+        <!-- Button Filter Lokasi -->
+        <div class="row mb-3">
+          <div class="col-12 text-center">
+            <button id="btnIndonesia" class="btn btn-primary me-2">Zoom ke Indonesia</button>
+            <button id="btnJawaTimur" class="btn btn-secondary">Zoom ke Jawa Timur</button>
+          </div>
+        </div>
+
+        <!-- Peta Gempa Bumi -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">Peta Gempa Bumi</div>
+              <div class="card-body">
+                <div id="map"></div>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Data Gempa Bumi Terkini -->
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">Data Gempa Bumi Terkini</div>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Waktu</th>
-                                    <th>Magnitudo</th>
-                                    <th>Kedalaman</th>
-                                    <th>Lokasi</th>
-                                    <th>Koordinat</th>
-                                    <th>Potensi Tsunami</th>
-                                </tr>
-                            </thead>
-                            <tbody id="gempaTable">
-                                <!-- Data dummy akan diisi oleh JavaScript -->
-                                <tr>
-                                    <td>2023-10-01 10:00 WIB</td>
-                                    <td>5.2 SR</td>
-                                    <td>10 km</td>
-                                    <td>Jl. Dummy, Desa X, Kecamatan Y, Surabaya, Jawa Timur</td>
-                                    <td>-7.2575, 112.7521</td>
-                                    <td>Tidak</td>
-                                </tr>
-                                <tr>
-                                    <td>2023-09-30 15:30 WIB</td>
-                                    <td>4.8 SR</td>
-                                    <td>15 km</td>
-                                    <td>Jl. Contoh, Desa Z, Kecamatan A, Malang, Jawa Timur</td>
-                                    <td>-7.98, 112.63</td>
-                                    <td>Tidak</td>
-                                </tr>
-                                <tr>
-                                    <td>2023-09-29 08:45 WIB</td>
-                                    <td>6.1 SR</td>
-                                    <td>20 km</td>
-                                    <td>Jl. Sample, Desa B, Kecamatan C, Jakarta, DKI Jakarta</td>
-                                    <td>-6.2, 106.816</td>
-                                    <td>Ya</td>
-                                </tr>
-                                <!-- Tambahkan lebih banyak baris dummy jika diperlukan -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">Data Gempa Bumi Terkini</div>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Waktu</th>
+                      <th>Magnitudo</th>
+                      <th>Kedalaman</th>
+                      <th>Lokasi</th>
+                      <th>Koordinat</th>
+                      <th>Potensi Tsunami</th>
+                    </tr>
+                  </thead>
+                  <tbody id="gempaTable">
+                    <tr>
+                      <td>2023-10-01 10:00 WIB</td>
+                      <td>5.2 SR</td>
+                      <td>10 km</td>
+                      <td>Jl. Dummy, Desa X, Kecamatan Y, Surabaya, Jawa Timur</td>
+                      <td>-7.2575, 112.7521</td>
+                      <td>Tidak</td>
+                    </tr>
+                    <tr>
+                      <td>2023-09-30 15:30 WIB</td>
+                      <td>4.8 SR</td>
+                      <td>15 km</td>
+                      <td>Jl. Contoh, Desa Z, Kecamatan A, Malang, Jawa Timur</td>
+                      <td>-7.98, 112.63</td>
+                      <td>Tidak</td>
+                    </tr>
+                    <tr>
+                      <td>2023-09-29 08:45 WIB</td>
+                      <td>6.1 SR</td>
+                      <td>20 km</td>
+                      <td>Jl. Sample, Desa B, Kecamatan C, Jakarta, DKI Jakarta</td>
+                      <td>-6.2, 106.816</td>
+                      <td>Ya</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
@@ -216,39 +230,39 @@
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
 
-    
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Leaflet JS untuk Peta -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Inisialisasi Peta dengan Default Indonesia
+      // Inisialisasi Peta dengan Default Indonesia
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('Initializing map...');
         let map = L.map('map').setView([-2.5, 118], 5); // Koordinat tengah Indonesia
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
         // Marker Dummy untuk Gempa
         const markers = [
-            L.marker([-7.2575, 112.7521]).bindPopup('Gempa - Kecamatan Y, Surabaya, Jawa Timur - 5.2 SR, 10 km, Tsunami: Tidak'),
-            L.marker([-7.98, 112.63]).bindPopup('Gempa - Kecamatan A, Malang, Jawa Timur - 4.8 SR, 15 km, Tsunami: Tidak'),
-            L.marker([-6.2, 106.816]).bindPopup('Gempa - Kecamatan C, Jakarta, DKI Jakarta - 6.1 SR, 20 km, Tsunami: Ya')
+          L.marker([-7.2575, 112.7521]).bindPopup('Gempa - Kecamatan Y, Surabaya, Jawa Timur - 5.2 SR, 10 km, Tsunami: Tidak'),
+          L.marker([-7.98, 112.63]).bindPopup('Gempa - Kecamatan A, Malang, Jawa Timur - 4.8 SR, 15 km, Tsunami: Tidak'),
+          L.marker([-6.2, 106.816]).bindPopup('Gempa - Kecamatan C, Jakarta, DKI Jakarta - 6.1 SR, 20 km, Tsunami: Ya')
         ];
 
         // Tambahkan semua marker ke peta
         markers.forEach(marker => marker.addTo(map));
+        console.log('Map initialized successfully!');
+      });
 
-        // Fungsi Filter Peta
-        document.getElementById('btnIndonesia').addEventListener('click', function() {
-            map.setView([-2.5, 118], 5); // Zoom ke Indonesia
-        });
+      // Fungsi Filter Peta
+      document.getElementById('btnIndonesia').addEventListener('click', function() {
+        map.setView([-2.5, 118], 5); // Zoom ke Indonesia
+      });
 
-        document.getElementById('btnJawaTimur').addEventListener('click', function() {
-            map.setView([-7.5, 112.5], 8); // Zoom ke Jawa Timur
-        });
-
-        // Placeholder untuk Muat Data Tabel (Jika perlu dinamis, ganti dengan Firebase nanti)
-        // Data tabel sudah statis di HTML; untuk real-time, gunakan API BMKG atau Firebase
+      document.getElementById('btnJawaTimur').addEventListener('click', function() {
+        map.setView([-7.5, 112.5], 8); // Zoom ke Jawa Timur
+      });
     </script>
   </body>
 </html>

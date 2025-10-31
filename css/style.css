@@ -2563,19 +2563,19 @@ textarea.form-control-lg {
   border-color: #B82132; }
   .btn-secondary:hover {
     color: #fff;
-    background-color: #004848;
-    border-color: #004444; }
+    background-color: #F2B28C;
+    border-color: #d69169; }
   .btn-check:focus + .btn-secondary, .btn-secondary:focus {
     color: #fff;
-    background-color: #004848;
-    border-color: #004444;
+    background-color: #F2B28C;
+    border-color: #d69169;
     -webkit-box-shadow: 0 0 0 0.25rem rgba(38, 111, 111, 0.5);
     box-shadow: 0 0 0 0.25rem rgba(38, 111, 111, 0.5); }
   .btn-check:checked + .btn-secondary,
   .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active,
   .show > .btn-secondary.dropdown-toggle {
     color: #fff;
-    background-color: #004444;
+    background-color: #d69169;
     border-color: #004040; }
     .btn-check:checked + .btn-secondary:focus,
     .btn-check:active + .btn-secondary:focus, .btn-secondary:active:focus, .btn-secondary.active:focus,
@@ -5762,7 +5762,7 @@ textarea.form-control-lg {
 .link-secondary {
   color: #B82132; }
   .link-secondary:hover, .link-secondary:focus {
-    color: #004444; }
+    color: #d69169; }
 
 .link-success {
   color: #198754; }
@@ -10375,3 +10375,73 @@ nav[aria-label="breadcrumb"] li:before {
       .site-footer .social li a:hover {
         background: #00204a;
         color: #fff; }
+
+        /* CSS untuk Lonceng (Bell Icon) dengan Animasi Ring */
+
+/* Keyframes untuk animasi ring (getar) */
+@keyframes ring {
+  0% { transform: rotate(0); }
+  1% { transform: rotate(30deg); }
+  3% { transform: rotate(-28deg); }
+  5% { transform: rotate(34deg); }
+  7% { transform: rotate(-32deg); }
+  9% { transform: rotate(30deg); }
+  11% { transform: rotate(-28deg); }
+  13% { transform: rotate(26deg); }
+  15% { transform: rotate(-24deg); }
+  17% { transform: rotate(22deg); }
+  19% { transform: rotate(-20deg); }
+  21% { transform: rotate(18deg); }
+  23% { transform: rotate(-16deg); }
+  25% { transform: rotate(14deg); }
+  27% { transform: rotate(-12deg); }
+  29% { transform: rotate(10deg); }
+  31% { transform: rotate(-8deg); }
+  33% { transform: rotate(6deg); }
+  35% { transform: rotate(-4deg); }
+  37% { transform: rotate(2deg); }
+  39% { transform: rotate(-1deg); }
+  41% { transform: rotate(1deg); }
+  43% { transform: rotate(0); }
+  100% { transform: rotate(0); }
+}
+
+/* Class untuk lonceng dengan animasi */
+.bell {
+  animation: ring 4s 0.7s ease-in-out infinite;
+  transform-origin: 50% 4px;
+  -webkit-animation: ring 4s 0.7s ease-in-out infinite;
+  -webkit-transform-origin: 50% 4px;
+  -moz-animation: ring 4s 0.7s ease-in-out infinite;
+  -moz-transform-origin: 50% 4px;
+  -o-animation: ring 4s 0.7s ease-in-out infinite;
+  -o-transform-origin: 50% 4px;
+}
+
+/* Opsional: CSS untuk badge notifikasi pada lonceng */
+.notification-bell {
+  position: relative;
+  display: inline-block;
+}
+
+.notification-bell .badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #dc3545; /* Warna merah untuk notifikasi darurat */
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: bold;
+  min-width: 18px;
+  text-align: center;
+  border: 2px solid #fff; /* Border putih untuk kontras */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect untuk lonceng */
+.bell:hover {
+  color: #B82132; /* Ubah warna saat hover */
+  cursor: pointer;
+}
