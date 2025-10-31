@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Untree.co" />
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
+
+    <link rel="stylesheet" href="css/tiny-slider.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Tambahan CSS untuk Peta -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+      #map { height: 400px; width: 100%; }
+      #smallMap { height: 200px; width: 100%; }
+    </style>
+
+    <title>Siaga Bolo - Beranda</title>
+  </head>
+  <body>
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+          <span class="icofont-close js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+      <div class="container">
+        <div class="menu-bg-wrap">
+          <div class="site-navigation">
+            <a href="beranda.html" class="logo m-0 float-start">Siaga Bolo</a>
+
+            <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+              <li class="active"><a href="beranda.html">Beranda</a></li>
+              <li><a href="pantau-bencana.html">Pantau Bencana</a></li>
+              <li><a href="monitoring-gempa.html">Monitoring Gempa Bumi</a></li>
+              <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+
+            <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-slide">
+        <div class="img overlay" style="background-image: url('images/hero_bg_3.jpg')"></div>
+      </div>
+
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-9 text-center">
+            <h1 class="heading" data-aos="fade-up">
+              Platform Mitigasi Bencana & Laporan Warga Jawa Timur
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert untuk Error Formulir -->
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="alert alert-danger alert-dismissible fade" id="formAlert" role="alert" style="display: none;">
+              <strong>Error:</strong> Semua field harus diisi sebelum mengirim laporan!
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Status Bencana Aktif -->
+    <div class="section">
+      <div class="container">
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-12">
+            <h2 class="font-weight-bold text-primary heading">Status Bencana Aktif</h2>
+            <div class="card">
+              <div class="card-header">Peta Bencana Aktif</div>
+              <div class="card-body">
+                <div id="map"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Status Kebutuhan -->
+    <div class="section">
+      <div class="container">
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-12">
+            <h2 class="font-weight-bold text-primary heading">Status Kebutuhan</h2>
+            <div class="card">
+              <div class="card-header">Data Kebutuhan</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Logistik: 50 paket dibutuhkan - Banjir di Kecamatan Wonocolo</li>
+                <li class="list-group-item">Perlengkapan: 30 tenda dibutuhkan - Kebutuhan di Posko Tenggilis</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Status Fasilitas -->
+    <div class="section">
+      <div class="container">
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-12">
+            <h2 class="font-weight-bold text-primary heading">Status Fasilitas</h2>
+            <div class="card">
+              <div class="card-header">Data Fasilitas Rusak dan Potensi Bencana</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Fasilitas Rusak: Jembatan di Kecamatan Sukolilo - Banjir</li>
+                <li class="list-group-item">Potensi Bencana: Saluran tersumbat di Desa Tenggilis - Banjir</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Formulir Laporan Warga -->
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <h3>Formulir Laporan Warga</h3>
+            <div class="card">
+              <div class="card-body">
+                <form id="laporanForm">
+                  <div class="mb-3">
+                    <label class="form-label">Jenis Laporan</label>
+                    <select class="form-select" name="jenis" required>
+                      <option value="">Pilih Jenis</option>
+                      <option>Potensi Bencana</option>
+                      <option>Kebutuhan Bencana</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Judul Laporan</label>
+                    <input type="text" class="form-control" name="judul" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Deskripsi Laporan</label>
+                    <textarea class="form-control" name="deskripsi" rows="3" required></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Lokasi</label>
+                    <input type="text" class="form-control" name="lokasi" placeholder="Nama jalan/dusun, desa/kelurahan, kecamatan, kabupaten/kota, provinsi" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Koordinat</label>
+                    <input type="text" class="form-control" name="koordinat" id="koordinatInput" placeholder="Latitude, Longitude" required readonly>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Detail Lokasi</label>
+                    <div id="smallMap"></div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Foto Lokasi</label>
+                    <input type="file" class="form-control" name="foto" accept="image/*" capture="camera" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Kirim Laporan</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer dari Template Untree -->
+    <div class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="widget">
+              <h3>Siaga Bolo</h3>
+              <p>Platform web interaktif untuk mitigasi bencana Jawa Timur yang mendorong partisipasi aktif warga melalui pelaporan real-time dan notifikasi dini</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="widget">
+              <h3>Sources</h3>
+              <ul class="list-unstyled float-start links">
+                <li><a href="beranda.html">Beranda</a></li>
+                <li><a href="pantau-bencana.html">Pantau Bencana</a></li>
+                <li><a href="monitoring-gempa.html">Monitoring Gempa Bumi</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="widget">
+              <ul class="list-unstyled social">
+                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-12 text-center">
+            <p>
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script>
+              Siaga Bolo. Hak Cipta dilindungi. &mdash; Dibuat oleh Tim
+              <a href="tim.html">Appa Galileo</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast untuk Sukses -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Siaga Bolo</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">Laporan berhasil dikirim!</div>
+      </div>
+    </div>
+
+    <!-- Modal untuk Notifikasi -->
+    <div class="modal fade" id="notificationModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tetap Waspada!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">Izinkan kami mengirimkan notifikasi bencana real-time agar Anda selalu siaga.</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="requestNotificationPermission()">Izinkan</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nanti Saja</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal untuk Lokasi -->
+    <div class="modal fade" id="locationModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Akses Lokasi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">Izinkan kami mengakses lokasi Anda untuk memberikan informasi bencana yang lebih relevan berdasarkan posisi Anda.</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="requestLocationPermission()">Izinkan</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tolak</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Scripts: Leaflet dulu, lalu Bootstrap -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/custom.js"></script>
+
+        <script>
+        // Inisialisasi Peta Utama
+        var map = L.map('map').setView([-7.2575, 112.7521], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        // Marker dummy dengan keterangan lengkap
+        L.marker([-7.2575, 112.7521]).addTo(map).bindPopup('Banjir - Kecamatan Wonocolo, Surabaya, Jawa Timur - 2023-10-01');
+        L.marker([-7.26, 112.75]).addTo(map).bindPopup('Pipa Rusak - Kecamatan Sukolilo, Surabaya, Jawa Timur - 2023-09-30');
+
+        // Inisialisasi Peta Kecil di Formulir
+        var smallMap = L.map('smallMap').setView([-7.2575, 112.7521], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(smallMap);
+
+        // Fitur Meminta Izin Notifikasi dan Lokasi
+        window.onload = function() {
+            if ('Notification' in window && navigator.geolocation) {
+                const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
+                notificationModal.show();
+            }
+        };
+
+        function requestNotificationPermission() {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    new Notification('Siaga Bolo', { body: 'Notifikasi diaktifkan! Sekarang minta izin lokasi.' });
+                    bootstrap.Modal.getInstance(document.getElementById('notificationModal')).hide();
+                    const locationModal = new bootstrap.Modal(document.getElementById('locationModal'));
+                    locationModal.show();
+                } else {
+                    alert('Izin notifikasi ditolak.');
+                    bootstrap.Modal.getInstance(document.getElementById('notificationModal')).hide();
+                }
+            });
+        }
+
+        function requestLocationPermission() {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    console.log('Lokasi berhasil diakses:', position.coords);
+                    alert('Lokasi berhasil diakses! Koordinat: ' + position.coords.latitude + ', ' + position.coords.longitude);
+                },
+                error => {
+                    console.error('Error mengakses lokasi:', error);
+                    alert('Izin lokasi ditolak.');
+                }
+            );
+            bootstrap.Modal.getInstance(document.getElementById('locationModal')).hide();
+        }
+
+        // Validasi dan Submit Formulir
+        document.getElementById('laporanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const fields = ['jenis', 'judul', 'deskripsi', 'lokasi', 'koordinat', 'foto'];
+            let isValid = true;
+            fields.forEach(field => {
+                if (!formData.get(field) || formData.get(field).trim() === '') {
+                    isValid = false;
+                }
+            });
+            if (!isValid) {
+                const alert = document.getElementById('formAlert');
+                alert.style.display = 'block';
+                alert.classList.add('show');
+                return;
+            }
+
+            // Simpan ke localStorage (placeholder untuk Firebase)
+            const laporan = {
+                jenis: formData.get('jenis'),
+                judul: formData.get('judul'),
+                deskripsi: formData.get('deskripsi'),
+                lokasi: formData.get('lokasi'),
+                koordinat: formData.get('koordinat'),
+                foto: formData.get('foto').name,
+                waktu: new Date().toISOString()
+            };
+            let laporanList = JSON.parse(localStorage.getItem('laporanList')) || [];
+            laporanList.push(laporan);
+            localStorage.setItem('laporanList', JSON.stringify(laporanList));
+
+            // Tampilkan Toast Sukses
+            const toast = new bootstrap.Toast(document.getElementById('successToast'));
+            toast.show();
+
+            // Reset form
+            e.target.reset();
+        });
+    </script>
