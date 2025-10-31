@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css" />  
+
 
     <link rel="stylesheet" href="fonts/icomoon/style.css" />
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css" />
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <title>
-      Siaga Bolo - Tim
+      Siaga Bolo - Monitoring Gempa Bumi
     </title>
   </head>
   <body>
@@ -41,7 +41,6 @@
       <div class="site-mobile-menu-body"></div>
     </div>
 
- 
     <nav class="site-nav">
       <div class="container">
         <div class="menu-bg-wrap">
@@ -70,7 +69,7 @@
       <div class="container">
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-9 text-center mt-5">
-            <h1 class="heading" data-aos="fade-up">Tim</h1>
+            <h1 class="heading" data-aos="fade-up">Monitoring Gempa Bumi</h1>
 
             <nav
               aria-label="breadcrumb"
@@ -83,7 +82,7 @@
                   class="breadcrumb-item active text-white-50"
                   aria-current="page"
                 >
-                  Tim
+                  Monitoring Gempa Bumi
                 </li>
               </ol>
             </nav>
@@ -92,62 +91,71 @@
       </div>
     </div>
 
-    
-    <div class="section section-5 bg-light">
+    <div class="section">
       <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-          <div class="col-lg-6 mb-5">
-            <h2 class="font-weight-bold heading text-primary mb-4">
-              Tim Kami
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-6 text-center mx-auto">
+            <h2 class="font-weight-bold text-primary heading">
+              Data Gempa Bumi Terkini
             </h2>
-            <p class="text-black-50">
-              Kami adalah Tim Appa Galileo , tim kolaborasi dari Universitas Airlangga dan Politeknik Negeri Media Kreatif  yang berdedikasi menciptakan solusi mitigasi bencana. Kami merancang Siaga Bolo untuk Mendorong partisipasi aktif warga melalui inovasi teknologi yang terintegrasi dan inklusif.
-            </p>
+            <p class="text-center mb-4">Pantau data bencana secara real-time berdasarkan laporan warga dan analitik. Halaman ini menampilkan statistik utama, bencana terbaru, dan visualisasi data bencana.</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-6 mb-5 mb-lg-0">
-            <div class="h-100 person">
-              <img
-                src="images/person-1.png"
-                alt="Image"
-                class="img-fluid"
-              />
-              <div class="person-contents">
-                <h2 class="mb-0"><a href="#">Muhammad Rahman Bagas Maulidhani</a></h2>
-                <span class="meta d-block mb-3">Universitas Airlangga</span>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Facere officiis inventore cumque tenetur laboriosam, minus
-                  culpa doloremque odio, neque molestias?
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-6 mb-5 mb-lg-0">
-            <div class="h-100 person">
-              <img
-                src="images/person-2.png"
-                alt="Image"
-                class="img-fluid"
-              />
 
-              <div class="person-contents">
-                <h2 class="mb-0"><a href="#">Sarah Adibah</a></h2>
-                <span class="meta d-block mb-3">Politeknik Negeri Media Kreatif</span>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Facere officiis inventore cumque tenetur laboriosam, minus
-                  culpa doloremque odio, neque molestias?
-                </p>
-              </div>
+        <!-- Data Gempa Bumi Terkini -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">Data Gempa Bumi Terkini</div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Magnitudo</th>
+                                    <th>Kedalaman</th>
+                                    <th>Lokasi</th>
+                                    <th>Koordinat</th>
+                                    <th>Potensi Tsunami</th>
+                                </tr>
+                            </thead>
+                            <tbody id="gempaTable">
+                                <!-- Data dummy akan diisi oleh JavaScript -->
+                                <tr>
+                                    <td>2023-10-01 10:00 WIB</td>
+                                    <td>5.2 SR</td>
+                                    <td>10 km</td>
+                                    <td>Jl. Dummy, Desa X, Kecamatan Y, Surabaya, Jawa Timur</td>
+                                    <td>-7.2575, 112.7521</td>
+                                    <td>Tidak</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-09-30 15:30 WIB</td>
+                                    <td>4.8 SR</td>
+                                    <td>15 km</td>
+                                    <td>Jl. Contoh, Desa Z, Kecamatan A, Malang, Jawa Timur</td>
+                                    <td>-7.98, 112.63</td>
+                                    <td>Tidak</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-09-29 08:45 WIB</td>
+                                    <td>6.1 SR</td>
+                                    <td>20 km</td>
+                                    <td>Jl. Sample, Desa B, Kecamatan C, Jakarta, DKI Jakarta</td>
+                                    <td>-6.2, 106.816</td>
+                                    <td>Ya</td>
+                                </tr>
+                                <!-- Tambahkan lebih banyak baris dummy jika diperlukan -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
 
-   <!-- Footer dari Template Untree -->
+    <!-- Footer dari Template Untree -->
     <div class="site-footer">
       <div class="container">
         <div class="row">
@@ -207,5 +215,40 @@
     <script src="js/navbar.js"></script>
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
+
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet JS untuk Peta -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Inisialisasi Peta dengan Default Indonesia
+        let map = L.map('map').setView([-2.5, 118], 5); // Koordinat tengah Indonesia
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Marker Dummy untuk Gempa
+        const markers = [
+            L.marker([-7.2575, 112.7521]).bindPopup('Gempa - Kecamatan Y, Surabaya, Jawa Timur - 5.2 SR, 10 km, Tsunami: Tidak'),
+            L.marker([-7.98, 112.63]).bindPopup('Gempa - Kecamatan A, Malang, Jawa Timur - 4.8 SR, 15 km, Tsunami: Tidak'),
+            L.marker([-6.2, 106.816]).bindPopup('Gempa - Kecamatan C, Jakarta, DKI Jakarta - 6.1 SR, 20 km, Tsunami: Ya')
+        ];
+
+        // Tambahkan semua marker ke peta
+        markers.forEach(marker => marker.addTo(map));
+
+        // Fungsi Filter Peta
+        document.getElementById('btnIndonesia').addEventListener('click', function() {
+            map.setView([-2.5, 118], 5); // Zoom ke Indonesia
+        });
+
+        document.getElementById('btnJawaTimur').addEventListener('click', function() {
+            map.setView([-7.5, 112.5], 8); // Zoom ke Jawa Timur
+        });
+
+        // Placeholder untuk Muat Data Tabel (Jika perlu dinamis, ganti dengan Firebase nanti)
+        // Data tabel sudah statis di HTML; untuk real-time, gunakan API BMKG atau Firebase
+    </script>
   </body>
 </html>
