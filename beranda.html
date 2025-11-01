@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Untree.co" />
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="favicon.png"/>
 
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap5" />
@@ -181,7 +181,7 @@
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Koordinat</label>
-                    <input type="text" class="form-control" name="koordinat" id="koordinatInput" placeholder="Latitude, Longitude" required readonly>
+                    <input type="text" class="form-control" name="koordinat" id="koordinatInput" placeholder="Latitude, Longitude" required>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Detail Lokasi</label>
@@ -206,7 +206,7 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="widget">
-              <h3>Siaga Bolo</h3>
+              <h5>Siaga Bolo</h5>
               <p>Platform web interaktif untuk mitigasi bencana Jawa Timur yang mendorong partisipasi aktif warga melalui pelaporan real-time dan notifikasi dini</p>
             </div>
           </div>
@@ -339,7 +339,7 @@
         function requestNotificationPermission() {
             Notification.requestPermission().then(permission => {
                 if (permission === 'granted') {
-                    new Notification('Siaga Bolo', { body: 'Notifikasi diaktifkan! Sekarang minta izin lokasi.' });
+                    new Notification('Siaga Bolo', { body: 'Notifikasi sudah diaktifkan. Izinkan lokasi untuk peringatan bencana di sekitar Anda.' });
                     bootstrap.Modal.getInstance(document.getElementById('notificationModal')).hide();
                     const locationModal = new bootstrap.Modal(document.getElementById('locationModal'));
                     locationModal.show();

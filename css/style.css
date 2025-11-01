@@ -542,6 +542,30 @@ progress {
   .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
     max-width: 1320px; } }
 
+      .chart-container {
+        max-width: 400px; /* Batasi ukuran di desktop */
+        margin: 0 auto; /* Tengah di desktop */
+        width: 100%; /* Responsif di mobile */
+      }
+      @media (max-width: 768px) {
+        .chart-container {
+          max-width: 100%; /* Full width di mobile */
+        }
+      }
+      /* Navbar Sticky Transparan di Desktop */
+      @media (min-width: 992px) {
+        .site-nav {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 1030; /* Di atas konten lain */
+        }
+        /* Padding top untuk konten agar tidak tertutup navbar */
+        .hero.page-inner {
+          padding-top: 80px; /* Sesuaikan tinggi navbar, asumsikan 80px */
+        }
+      }
+      
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
