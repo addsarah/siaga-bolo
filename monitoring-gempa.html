@@ -10,6 +10,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Untree.co" />
+    <!-- Favicon diperbaiki -->
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="shortcut icon" href="favicon.png" />
 
     <meta name="description" content="" />
@@ -101,8 +103,8 @@
         <!-- Button Filter Lokasi -->
         <div class="row mb-3">
           <div class="col-12 text-center">
-            <button id="btnIndonesia" class="btn btn-primary me-2">Zoom ke Indonesia</button>
-            <button id="btnJawaTimur" class="btn btn-secondary">Zoom ke Jawa Timur</button>
+            <button id="btnJawaTimur" class="btn btn-primary me-2">Zoom ke Jawa Timur</button>
+            <button id="btnSurabaya" class="btn btn-secondary">Zoom ke Surabaya</button>
           </div>
         </div>
 
@@ -235,10 +237,11 @@
     <!-- Leaflet JS untuk Peta -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-      // Inisialisasi Peta dengan Default Indonesia
+      // Inisialisasi Peta dengan Default Jawa Timur
+      let map; // Buat map sebagai variabel global
       document.addEventListener('DOMContentLoaded', function() {
         console.log('Initializing map...');
-        let map = L.map('map').setView([-2.5, 118], 5); // Koordinat tengah Indonesia
+        map = L.map('map').setView([-7.5, 112.5], 8); // Default ke Jawa Timur
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
@@ -256,12 +259,12 @@
       });
 
       // Fungsi Filter Peta
-      document.getElementById('btnIndonesia').addEventListener('click', function() {
-        map.setView([-2.5, 118], 5); // Zoom ke Indonesia
-      });
-
       document.getElementById('btnJawaTimur').addEventListener('click', function() {
         map.setView([-7.5, 112.5], 8); // Zoom ke Jawa Timur
+      });
+
+      document.getElementById('btnSurabaya').addEventListener('click', function() {
+        map.setView([-7.2575, 112.7521], 12); // Zoom ke Surabaya
       });
     </script>
   </body>
